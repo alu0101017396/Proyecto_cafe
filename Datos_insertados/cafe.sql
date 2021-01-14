@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `cafe`.`Cliente` (
   `Telefono` INT NULL,
   `Direccion` VARCHAR(45) NULL,
   `Fecha_de_nacimiento` DATE NULL,
-  `Descuento` DOUBLE NOT NULL,
+  `Descuento` DECIMAL NOT NULL,
   `ID_Tarjeta` INT NULL,
   PRIMARY KEY (`DNI`),
   CONSTRAINT `ID_Tarjeta`
@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `cafe`.`Plato` ;
 CREATE TABLE IF NOT EXISTS `cafe`.`Plato` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(45) NOT NULL,
-  `Precio` DOUBLE NOT NULL,
+  `Precio` DECIMAL NOT NULL,
   `Alergenos` VARCHAR(45) NULL,
   PRIMARY KEY (`ID`))
 ;
@@ -73,8 +73,8 @@ DROP TABLE IF EXISTS `cafe`.`Pedido` ;
 CREATE TABLE IF NOT EXISTS `cafe`.`Pedido` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Tipo` VARCHAR(20) NOT NULL,
-  `Precio` DOUBLE NOT NULL,
-  `Rebajado` DOUBLE NULL,
+  `Precio` DECIMAL NOT NULL,
+  `Rebajado` DECIMAL NULL,
   `ID_Cliente` VARCHAR(9) NULL,
   `ID_Plato` INT NULL,
   PRIMARY KEY (`ID`),
@@ -134,6 +134,7 @@ CREATE TABLE IF NOT EXISTS `cafe`.`Establecimiento` (
   `Stock` INT NULL,
   `Direccion` VARCHAR(45) NOT NULL,
   `Inventario` INT NULL,
+  `Establecimientocol` VARCHAR(45) NULL,
   PRIMARY KEY (`Nombre`))
 ;
 
@@ -141,9 +142,9 @@ CREATE TABLE IF NOT EXISTS `cafe`.`Establecimiento` (
 -- -----------------------------------------------------
 -- Table `cafe`.`Plato-Ingrediente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `cafe`.`Plato_Ingrediente` ;
+DROP TABLE IF EXISTS `cafe`.`Plato-Ingrediente` ;
 
-CREATE TABLE IF NOT EXISTS `cafe`.`Plato_Ingrediente` (
+CREATE TABLE IF NOT EXISTS `cafe`.`Plato-Ingrediente` (
   `ID_Plato` INT NOT NULL,
   `ID_Ingrediente` INT NOT NULL,
   
@@ -163,9 +164,9 @@ CREATE TABLE IF NOT EXISTS `cafe`.`Plato_Ingrediente` (
 -- -----------------------------------------------------
 -- Table `cafe`.`Establecimiento-Plato`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `cafe`.`Establecimiento_Plato` ;
+DROP TABLE IF EXISTS `cafe`.`Establecimiento-Plato` ;
 
-CREATE TABLE IF NOT EXISTS `cafe`.`Establecimiento_Plato` (
+CREATE TABLE IF NOT EXISTS `cafe`.`Establecimiento-Plato` (
   `ID_Establecimiento` VARCHAR(30) NOT NULL,
   `ID_Plato` INT NOT NULL,
   CONSTRAINT `ID_Establecimiento`
@@ -184,9 +185,9 @@ CREATE TABLE IF NOT EXISTS `cafe`.`Establecimiento_Plato` (
 -- -----------------------------------------------------
 -- Table `cafe`.`Establecimiento-Personal`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `cafe`.`Establecimiento_Personal` ;
+DROP TABLE IF EXISTS `cafe`.`Establecimiento-Personal` ;
 
-CREATE TABLE IF NOT EXISTS `cafe`.`Establecimiento_Personal` (
+CREATE TABLE IF NOT EXISTS `cafe`.`Establecimiento-Personal` (
   `Nombre_Establecimiento` VARCHAR(30) NOT NULL,
   `ID_Personal` VARCHAR(9) NOT NULL,
   CONSTRAINT `Nombre_Establecimiento`
@@ -257,114 +258,3 @@ CREATE TABLE IF NOT EXISTS `cafe`.`Opinion` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
--- //// Inserciones Tarjetas
-
-insert into Tarjeta_de_puntos (Puntos) values (100);
-insert into Tarjeta_de_puntos (Puntos) values (230);
-insert into Tarjeta_de_puntos (Puntos) values (69);
-insert into Tarjeta_de_puntos (Puntos) values (720);
-
--- select * from Tarjeta_de_puntos;
--- /// Inserciones Clientes
--- describe Cliente;
-insert into Cliente(DNI,Nombre,Telefono,Direccion,Fecha_de_nacimiento,Descuento,ID_Tarjeta) values ("12345678A","Enrique M Pedroza",684145933,"Calle el suspenso",'1996-12-22',0,1);
-insert into Cliente(DNI,Nombre,Telefono,Direccion,Fecha_de_nacimiento,Descuento,ID_Tarjeta) values ("12165678A","Cristian Rodriguez",684176933,"Calle GG ez ",'2000-10-01',0,2);
-insert into Cliente(DNI,Nombre,Telefono,Direccion,Fecha_de_nacimiento,Descuento,ID_Tarjeta) values ("12234678A","Francisco uwu",634545933,"Calle lemmon squezy",'1999-05-13',0,3);
-insert into Cliente(DNI,Nombre,Telefono,Direccion,Fecha_de_nacimiento,Descuento,ID_Tarjeta) values ("12344678A","Alberto owo",684177933,"Calle git gud",'1980-03-03',0,4);
--- select * from Cliente;
--- //// Inserciones Ingredientes
-
--- describe Ingredientes;
-
-insert into Ingredientes (Nombre,Alergeno,Tipo) values ("cerveza","Gluten","Bebida");
-insert into Ingredientes (Nombre,Alergeno,Tipo) values ("huevo",NULL,"Constructor");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Pan","Gluten","Harinas");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Tomate",NULL,"Verdura");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Queso","Lactosa","Lacteo");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Carne de res",NULL,"Carnes");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Salsa de atun",NULL,"Salsa");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Penne","Gluten","Pasta");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Papa frita","Gluten","Tuberculo");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Expresso",NULL,"Cafe");
-insert into Ingredientes (Nombre,Alergeno,Tipo)values ("Manzanilla",NULL,"Te");
-
--- select * from Ingredientes;
-
---  Platos
-
--- describe Plato;
-
-insert into Plato(Nombre,Precio,Alergenos) values ("Cerveza x5",5.0,"Gluten");
-insert into Plato(Nombre,Precio,Alergenos) values ("Hamburguesa",4.5,"Lactosa");
-insert into Plato(Nombre,Precio,Alergenos) values ("Hamburguesa combo",8,"Gluten,Lactosa");
-insert into Plato(Nombre,Precio,Alergenos) values ("Pasta con salsa de atun",6,"Gluten");
--- select * from Plato;
-
-
--- describe Plato_Ingrediente;
-
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(1,1);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,2);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,3);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,4);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,5);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,6);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,1);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,2);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,3);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,4);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,5);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,6);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,9);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(4,7);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(4,8);
-
--- select * from Plato_Ingrediente;
-
--- /// Pedido
-
--- describe Pedido;
-
-insert into Pedido (Tipo,Precio,Rebajado,ID_Cliente,ID_Plato) values ("Local",5.0,5.0,"12345678A",1);
-insert into Pedido (Tipo,Precio,Rebajado,ID_Cliente,ID_Plato)values("Local",5,4.5,"12345678A",1);
-insert into Pedido (Tipo,Precio,Rebajado,ID_Cliente,ID_Plato)values("Domicilio",8,4,"12234678A",3);
-insert into Pedido (Tipo,Precio,Rebajado,ID_Cliente,ID_Plato)values("Domicilio",6,6,"12165678A",4);
-insert into Pedido (Tipo,Precio,Rebajado,ID_Cliente,ID_Plato)values("Local",4.5,4,"12344678A",2);
-
--- select * from Pedido;
-
--- describe Personal;
-
-insert into Personal (DNI,Nombre,Tarjeta_electronico,Fecha_de_nacimiento,Tipo,Hora_entrada,Hora_salida)values("1111111A","Paco",1,'1999-01-01',"Camarero",'09:00:00','16:00:00');
-insert into Personal (DNI,Nombre,Tarjeta_electronico,Fecha_de_nacimiento,Tipo,Hora_entrada,Hora_salida)values("22222222B","Maria",2,'1998-03-22',"Camarero",'16:00:00','21:00:00');
-insert into Personal (DNI,Nombre,Tarjeta_electronico,Fecha_de_nacimiento,Tipo,Hora_entrada,Hora_salida)values("33333333C","Vanesa",3,'2000-05-23',"Gerente",'09:00:00','21:00:00');
-insert into Personal (DNI,Nombre,Tarjeta_electronico,Fecha_de_nacimiento,Tipo,Hora_entrada,Hora_salida)values("44444444D","Javier",4,'1999-01-01',"Cocinero",'09:00:00','21:00:00');
-
--- select * from Personal;
-
--- describe Establecimiento;
-
-insert into Establecimiento (Nombre,Gerente,Direccion)values("C.A.F.E La Laguna","Vanesa","Calle principal");
-
-
--- describe Establecimiento_Personal;
-insert into Establecimiento_Personal(Nombre_Establecimiento,ID_Personal) values ("C.A.F.E La Laguna","1111111A");
-insert into Establecimiento_Personal(Nombre_Establecimiento,ID_Personal) values ("C.A.F.E La Laguna","22222222B");
-insert into Establecimiento_Personal(Nombre_Establecimiento,ID_Personal) values ("C.A.F.E La Laguna","33333333C");
-insert into Establecimiento_Personal(Nombre_Establecimiento,ID_Personal) values ("C.A.F.E La Laguna","44444444D");
-
-
-select * from Establecimiento_Personal;
-
-
-
-
-
-
-
-
-
-
-
