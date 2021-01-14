@@ -27,7 +27,6 @@ BEGIN
     DROP TEMPORARY TABLE IF EXISTS platosDelPedido;
     DROP TEMPORARY TABLE IF EXISTS platosYEstablecimiento;
     DROP TEMPORARY TABLE IF EXISTS platosEnEstablecimiento;
-    DROP TEMPORARY TABLE IF EXISTS ingredientesPlatoPedido;
     DROP TEMPORARY TABLE IF EXISTS ingredientesYCantidadesPedido;
 
     CREATE TEMPORARY TABLE IF NOT EXISTS platosDelPedido AS (SELECT ID_Plato, Cantidad FROM Pedido WHERE ID_Pedido = NEW.ID_Pedido);
@@ -61,6 +60,11 @@ BEGIN
     /* 4. Poner precio del pedido que es la suma de los platos */
     SELECT SUM(p.precio * pp.Cantidad) INTO precioTotal FROM platosDelPedido AS pp JOIN Plato AS p ON pp.ID_Plato = p.ID;
     SET NEW.Precio = precioTotal;
+
+    DROP TEMPORARY TABLE IF EXISTS platosDelPedido;
+    DROP TEMPORARY TABLE IF EXISTS platosYEstablecimiento;
+    DROP TEMPORARY TABLE IF EXISTS platosEnEstablecimiento;
+    DROP TEMPORARY TABLE IF EXISTS ingredientesYCantidadesPedido;
 
 END$$
 DELIMITER ;
