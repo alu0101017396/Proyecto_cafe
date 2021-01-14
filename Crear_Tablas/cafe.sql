@@ -143,7 +143,7 @@
   CREATE TABLE IF NOT EXISTS `cafe`.`Cobro` (
     `ID` INT NOT NULL AUTO_INCREMENT,
     `Tipo` VARCHAR(20) NOT NULL,
-    `Precio` FLOAT NOT NULL,
+    `Precio` FLOAT NULL,
     `Rebajado` FLOAT NULL,
     `ID_Cliente` VARCHAR(9) NULL,
     `Nombre_Establecimiento` VARCHAR(30) NOT NULL,
