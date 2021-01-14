@@ -4,7 +4,7 @@ DELIMITER $$
 
 CREATE TRIGGER actualizarPrecioProducto
 BEFORE INSERT 
-ON Pedido FOR EACH ROW
+ON Cobro FOR EACH ROW
 BEGIN
   DECLARE id_tarjeta_cliente integer;
   DECLARE puntosEuros double;
