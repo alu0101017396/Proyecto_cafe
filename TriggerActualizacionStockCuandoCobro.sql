@@ -20,6 +20,8 @@ BEGIN
     DECLARE precioTotal float;
 
     /* 1. Te compruebe que los platos pertenecen al establecimiento de ese pedido. */
+    -- Dicho de otra forma, que el plato del pedido, pertenezca al plato del establecimiento.
+    
     DROP TEMPORARY TABLE IF EXISTS platosDelPedido;
     DROP TEMPORARY TABLE IF EXISTS platosYEstablecimiento;
     DROP TEMPORARY TABLE IF EXISTS platosEnEstablecimiento;
