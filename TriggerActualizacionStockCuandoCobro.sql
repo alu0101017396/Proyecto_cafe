@@ -36,7 +36,8 @@ BEGIN
     END IF;
 
     /* 2. En la tabla pedido pille la cantidad de ingredientes que llevan todos los platos. */
-    CREATE TEMPORARY TABLE IF NOT EXISTS ingredientesYCantidadesPedido AS (SELECT pi.ID_Ingrediente AS ID_Ingrediente, (pdp.Cantidad * pi.Cantidad) AS CantidadTotal FROM platosDelPedido AS pdp JOIN Plato_Ingrediente AS pi ON pdp.ID_Plato = pi.ID_Plato);
+    CREATE TEMPORARY TABLE IF NOT EXISTS ingredientesYCantidadesPedido AS (SELECT pi.ID_Ingrediente AS ID_Ingrediente, SUM(pdp.Cantidad * pi.Cantidad) AS CantidadTotal 
+        FROM platosDelPedido AS pdp JOIN Plato_Ingrediente AS pi ON pdp.ID_Plato = pi.ID_Plato GROUP BY ID_Ingrediente);
     
     /* 3. Y lo restamos al stock del establecimiento. (Comprobamos si hay suficiente stock para el pedido) */
 
