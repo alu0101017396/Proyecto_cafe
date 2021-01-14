@@ -16,12 +16,14 @@ BEFORE INSERT
 ON Cobro FOR EACH ROW
 BEGIN
     DECLARE numeroEstablecimientos integer;
+    DECLARE numeroPlatosEnEstablecimiento integer;
+    DECLARE numeroPlatosDelPedido integer;
     DECLARE siHayIngredientesNegativos integer;
     DECLARE precioTotal float;
 
     /* 1. Te compruebe que los platos pertenecen al establecimiento de ese pedido. */
     -- Dicho de otra forma, que el plato del pedido, pertenezca al plato del establecimiento.
-    
+
     DROP TEMPORARY TABLE IF EXISTS platosDelPedido;
     DROP TEMPORARY TABLE IF EXISTS platosYEstablecimiento;
     DROP TEMPORARY TABLE IF EXISTS platosEnEstablecimiento;
@@ -33,8 +35,11 @@ BEGIN
     CREATE TEMPORARY TABLE IF NOT EXISTS platosEnEstablecimiento AS (SELECT ID_Plato FROM platosYEstablecimiento WHERE ID_Establecimiento = NEW.Nombre_Establecimiento); /* El conjunto A */
     SELECT COUNT(*) INTO numeroEstablecimientos FROM platosYEstablecimiento WHERE ID_Plato NOT IN (SELECT ID_Plato FROM platosEnEstablecimiento); /* Que NO esté en A */
 
-    IF (numeroEstablecimientos > 0) THEN
-        signal sqlstate '45000' set message_text = 'Error un plato no se encuentra en el establecimiento';
+    SELECT COUNT(DISTINCT(ep.ID_Plato)) INTO numeroPlatosEnEstablecimiento FROM establecimiento_plato AS ep JOIN platosDelPedido AS pd ON ep.ID_Plato = pd.ID_Plato; 
+    SELECT COUNT(DISTINCT(ID_Plato)) INTO numeroPlatosDelPedido FROM platosDelPedido;
+
+    IF (numeroEstablecimientos > 0 || numeroPlatosEnEstablecimiento != numeroPlatosDelPedido) THEN
+        signal sqlstate '45000' set message_text = 'Error un plato no se encuentra en el establecimiento o no hay asociado un plato a ningún establecimiento';
     END IF;
 
     /* 2. En la tabla pedido pille la cantidad de ingredientes que llevan todos los platos. */
