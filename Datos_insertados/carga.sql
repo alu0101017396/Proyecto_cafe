@@ -42,21 +42,21 @@ insert into Plato(Nombre,Precio,Alergenos) values ("Pasta con salsa de atun",6,"
 
 -- describe Plato_Ingrediente;
 
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(1,1);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,2);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,3);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,4);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,5);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(2,6);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,1);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,2);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,3);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,4);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,5);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,6);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(3,9);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(4,7);
-insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente) values(4,8);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(1,1,5);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(2,2,2);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(2,3,2);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(2,4,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(2,5,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(2,6,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(3,1,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(3,2,2);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(3,3,2);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(3,4,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(3,5,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(3,6,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(3,9,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(4,7,1);
+insert into Plato_Ingrediente (ID_Plato,ID_Ingrediente,Cantidad) values(4,8,1);
 
 -- select * from Plato_Ingrediente;
 
