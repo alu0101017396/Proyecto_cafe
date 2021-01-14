@@ -40,7 +40,7 @@
     `Telefono` INT NULL,
     `Direccion` VARCHAR(45) NULL,
     `Fecha_de_nacimiento` DATE NULL,
-    `Descuento` DOUBLE NOT NULL,
+    `Descuento` DOUBLE NULL,
     `ID_Tarjeta` INT NULL,
     PRIMARY KEY (`DNI`),
     CONSTRAINT `ID_Tarjeta`
@@ -90,7 +90,7 @@
   CREATE TABLE IF NOT EXISTS `cafe`.`Personal` (
     `DNI` VARCHAR(9) NOT NULL,
     `Nombre` VARCHAR(45) NOT NULL,
-    `Tarjeta_electronico` INT NOT NULL,
+    `Tarjeta_electronico` INT NOT NULL UNIQUE,
     `Telefono` INT(9) NULL,
     `Fecha_de_nacimiento` DATE NOT NULL,
     `Tipo` VARCHAR(45) NOT NULL,
@@ -172,6 +172,7 @@
   CREATE TABLE IF NOT EXISTS `cafe`.`Plato_Ingrediente` (
     `ID_Plato` INT NOT NULL,
     `ID_Ingrediente` INT NOT NULL,
+    `Cantidad` INT NOT NULL,
     PRIMARY KEY (`ID_Plato`,`ID_Ingrediente`),
     CONSTRAINT `ID_Plato_fk`
       FOREIGN KEY (`ID_Plato`)
@@ -289,7 +290,7 @@
     `Nombre_Establecimiento_stock` VARCHAR(30) NOT NULL,
     `ID_Ingrediente_stock` INT NOT NULL,
     `Cantidad` INT NULL,
-    UNIQUE INDEX `index4` (`Nombre_Establecimiento_stock`, `ID_Ingrediente_stock`),
+    PRIMARY KEY (`Nombre_Establecimiento_stock`, `ID_Ingrediente_stock`),
     CONSTRAINT `Nombre_Establecimiento_Stock`
       FOREIGN KEY (`Nombre_Establecimiento_stock`)
       REFERENCES `cafe`.`Establecimiento` (`Nombre`)
@@ -318,11 +319,10 @@
   DROP TABLE IF EXISTS `cafe`.`Inventario` ;
 
   CREATE TABLE IF NOT EXISTS `cafe`.`Inventario` (
-    `Id_Inv` INT NOT NULL AUTO_INCREMENT,
     `Nombre_Establecimiento_Inventario` VARCHAR(30) NOT NULL,
     `Id_objeto` INT NOT NULL,
     `Cantidad` INT NULL,
-    PRIMARY KEY (`Id_Inv`),
+    PRIMARY KEY (`Nombre_Establecimiento_Inventario`,`Id_objeto`),
     CONSTRAINT `Nombre_Establecimiento_Stock0`
       FOREIGN KEY (`Nombre_Establecimiento_Inventario`)
       REFERENCES `cafe`.`Establecimiento` (`Nombre`)
