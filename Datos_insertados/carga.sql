@@ -102,11 +102,11 @@ insert into Establecimiento_Personal(Nombre_Establecimiento,ID_Personal) values 
 
 
 
-insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido) values ("Local",5.0,5.0,"12345678A","C.A.F.E La Laguna",1);
-insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido) values ("Local",5.0,5.0,"12345678A","C.A.F.E La Laguna",1);
-insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido)values("Domicilio",8,4,"12234678A","C.A.F.E Santa Cruz",3);
-insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido)values("Domicilio",6,6,"12165678A","C.A.F.E La Laguna",4);
-insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido)values("Local",6,4,"12344678A","C.A.F.E Santa Cruz",5);
+insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido) values ("Local",NULL,NULL,"12345678A","C.A.F.E La Laguna",1);
+insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido) values ("Local",NULL,NULL,"12345678A","C.A.F.E La Laguna",1);
+insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido)values("Domicilio",NULL,NULL,"12234678A","C.A.F.E Santa Cruz",3);
+insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido)values("Domicilio",NULL,NULL,"12165678A","C.A.F.E La Laguna",4);
+insert into Cobro (Tipo,Precio,Rebajado,ID_Cliente,Nombre_Establecimiento,ID_Pedido)values("Local",NULL,NULL,"12344678A","C.A.F.E Santa Cruz",5);
 
 
 -- -- -- select * from Establecimiento_Personal;
