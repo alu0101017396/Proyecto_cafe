@@ -35,11 +35,11 @@ BEGIN
     DROP TEMPORARY TABLE IF EXISTS ingredientesYCantidadesPedido;
 
     CREATE TEMPORARY TABLE IF NOT EXISTS platosDelPedido AS (SELECT ID_Plato, Cantidad FROM Pedido WHERE ID_Pedido = NEW.ID_Pedido);
-    CREATE TEMPORARY TABLE IF NOT EXISTS platosYEstablecimiento AS (SELECT p.ID_Plato, ID_Establecimiento FROM platosDelPedido AS p JOIN establecimiento_plato AS e ON p.ID_plato = e.ID_Plato);
+    CREATE TEMPORARY TABLE IF NOT EXISTS platosYEstablecimiento AS (SELECT p.ID_Plato, ID_Establecimiento FROM platosDelPedido AS p JOIN Establecimiento_Plato AS e ON p.ID_plato = e.ID_Plato);
     CREATE TEMPORARY TABLE IF NOT EXISTS platosEnEstablecimiento AS (SELECT ID_Plato FROM platosYEstablecimiento WHERE ID_Establecimiento = NEW.Nombre_Establecimiento); /* El conjunto A */
     SELECT COUNT(*) INTO numeroEstablecimientos FROM platosYEstablecimiento WHERE ID_Plato NOT IN (SELECT ID_Plato FROM platosEnEstablecimiento); /* Que NO esté en A */
 
-    SELECT COUNT(DISTINCT(ep.ID_Plato)) INTO numeroPlatosEnEstablecimiento FROM establecimiento_plato AS ep JOIN platosDelPedido AS pd ON ep.ID_Plato = pd.ID_Plato; 
+    SELECT COUNT(DISTINCT(ep.ID_Plato)) INTO numeroPlatosEnEstablecimiento FROM Establecimiento_Plato AS ep JOIN platosDelPedido AS pd ON ep.ID_Plato = pd.ID_Plato; 
     SELECT COUNT(DISTINCT(ID_Plato)) INTO numeroPlatosDelPedido FROM platosDelPedido;
 
     IF (numeroEstablecimientos > 0 || numeroPlatosEnEstablecimiento != numeroPlatosDelPedido) THEN
