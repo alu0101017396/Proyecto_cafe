@@ -27,20 +27,6 @@ END //
 
 DELIMITER ;
 
--- El tipo de pedido ha de ser "Local" o "Domicilio":
-DROP TRIGGER IF EXISTS comprobar_tipo_cobro;
-
-DELIMITER //
-
-CREATE TRIGGER comprobar_tipo_cobro BEFORE INSERT ON Cobro FOR EACH ROW
-BEGIN
-    IF NEW.Tipo != "Local"  AND NEW.Tipo != "Domicilio" THEN
-         signal sqlstate '45000' set message_text = 'El tipo de un pedido solo puede ser Local o Domicilio';
-    END IF;
-END //
-
-DELIMITER ;
-
 -- Los ingredientes solo pueden tener alérgenos recogidos en el reglamento europeo. Los cuales son 14 alérgenos:
 DROP TRIGGER IF EXISTS comprobar_alergeno_ingrediente;
 

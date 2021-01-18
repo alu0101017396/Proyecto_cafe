@@ -21,6 +21,11 @@ BEGIN
     DECLARE siHayIngredientesNegativos integer;
     DECLARE precioTotal float;
 
+    -- El tipo de pedido ha de ser "Local" o "Domicilio":
+    IF NEW.Tipo != "Local"  AND NEW.Tipo != "Domicilio" THEN
+         signal sqlstate '45000' set message_text = 'El tipo de un pedido solo puede ser Local o Domicilio';
+    END IF;
+
     /* 1. Te compruebe que los platos pertenecen al establecimiento de ese pedido. */
     -- Dicho de otra forma, que el plato del pedido, pertenezca al plato del establecimiento.
 
