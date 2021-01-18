@@ -33,3 +33,16 @@ En este documento figuran las diferentes pruebas que asugaran el correcto funcio
 
 En este documento se ve reflejado los diferentes scripts o sentencias que generaran de forma automatica el esquema de la base de datos de C.A.F.E
 
+## Scripts de la Base de Datos
+
+### [Crear_tablas](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Crear_Tablas)
+
+Scripts SQL que genraran las diferentes tablas de la base de datos
+
+### [Datos_Insertados](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Datos_insertados)
+
+Scripts para insertar informacion dentro de la base de datos.
+
+### [Triggers](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Trigger)
+
+Scripts de los disparadores (triggers) de la base de datos.
