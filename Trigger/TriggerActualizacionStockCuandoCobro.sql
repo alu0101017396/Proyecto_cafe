@@ -21,6 +21,11 @@ BEGIN
     DECLARE siHayIngredientesNegativos integer;
     DECLARE precioTotal float;
 
+    DECLARE id_tarjeta_cliente integer;
+    DECLARE puntosEuros double;
+    DECLARE puntosCliente double;
+    DECLARE nuevoRebajado double;
+
     -- El tipo de pedido ha de ser "Local" o "Domicilio":
     IF NEW.Tipo != "Local"  AND NEW.Tipo != "Domicilio" THEN
          signal sqlstate '45000' set message_text = 'El tipo de un pedido solo puede ser Local o Domicilio';
@@ -65,6 +70,25 @@ BEGIN
     /* 4. Poner precio del pedido que es la suma de los platos */
     SELECT SUM(p.precio * pp.Cantidad) INTO precioTotal FROM platosDelPedido AS pp JOIN Plato AS p ON pp.ID_Plato = p.ID;
     SET NEW.Precio = precioTotal;
+
+    -- Actualizamos el precio del producto con los puntos, y añadimos los nuevos puntos de la compra
+
+    SELECT ID_Tarjeta INTO id_tarjeta_cliente FROM Cliente WHERE DNI = NEW.ID_Cliente;
+    SELECT Puntos INTO puntosCliente FROM Tarjeta_de_puntos WHERE ID = id_tarjeta_cliente;
+    SET puntosEuros = puntosCliente / 10; /* Convertir puntos del cliente en euros */
+
+    IF (puntosEuros > NEW.Precio)
+        THEN
+        SET puntosEuros = puntosEuros - NEW.Precio;
+        SET nuevoRebajado = 0;
+        ELSE
+        SET nuevoRebajado = NEW.Precio - puntosEuros;
+        SET puntosEuros = 0;
+    END IF;
+
+    SET puntosCliente = (puntosEuros * 10) + NEW.Precio; /* Añadimos los nuevos puntos del nuevo producto */
+    UPDATE Tarjeta_de_puntos SET Puntos = puntosCliente WHERE id = id_tarjeta_cliente;
+    SET NEW.Rebajado = nuevoRebajado;
 
     DROP TEMPORARY TABLE IF EXISTS platosDelPedido;
     DROP TEMPORARY TABLE IF EXISTS platosYEstablecimiento;
