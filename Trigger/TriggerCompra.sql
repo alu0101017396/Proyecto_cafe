@@ -11,7 +11,7 @@ BEGIN
 
   IF NEW.Tipo = 'S' THEN /* S = Stock */
     SELECT Cantidad INTO quantity FROM Stock WHERE Nombre_establecimiento_stock = NEW.Nombre_est && ID_Ingrediente_stock = NEW.Item;
-    IF (quantity != '') THEN
+    IF (quantity != '' OR quantity = 0) THEN
         SET quantity = quantity + NEW.Cantidad;
         UPDATE Stock SET Cantidad = quantity WHERE Nombre_establecimiento_stock = NEW.Nombre_est && ID_Ingrediente_stock = NEW.Item;
       ELSE
@@ -19,7 +19,7 @@ BEGIN
     END IF;
   ELSE /* No comprobamos si es I, ya que eso lo hace otro Trigger*/
     SELECT Cantidad INTO quantity FROM Inventario WHERE Nombre_establecimiento_Inventario = NEW.Nombre_est && Id_objeto = NEW.Item;
-    IF (quantity != '') THEN
+    IF (quantity != '' OR quantity = 0) THEN
         SET quantity = quantity + NEW.Cantidad;
         UPDATE Inventario SET Cantidad = quantity WHERE Nombre_establecimiento_Inventario = NEW.Nombre_est && Id_objeto = NEW.Item;
       ELSE
