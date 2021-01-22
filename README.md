@@ -39,7 +39,7 @@ En este documento se ve reflejado los diferentes scripts o sentencias que genera
 
 Scripts SQL que genraran las diferentes tablas de la base de datos
 
-### [Datos_Insertados](./Datos_Insertados/carga.sql)
+### [Datos_Insertados](./Datos_insertados/carga.sql)
 
 Scripts para insertar informacion dentro de la base de datos.
 
