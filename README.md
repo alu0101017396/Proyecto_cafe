@@ -16,20 +16,20 @@ También se quiere tener constancia de las reclamaciones y las valoraciones que 
 
 ## Documentos del proyecto
 
-### ERE - Modelo Entidad Relacion Extendido
+### [ERE - Modelo Entidad Relacion Extendido](https://drive.google.com/file/d/1AtVhL4PMIkBjO-6nHEWy3IV6Y3pfqCxy/view?usp=sharing)
 
 En este documento se establece el modelo entidad relacion del proyecto. Dentro de el se encuentra el esquema E/R, asi mismo una descripcion de una explicacion de cada entidad y de cada relacion (con cardinalidad) y los atributos que dispone cada uno si es que los tiene. 
 
-### Grafo Relacional
+### [Grafo Relacional](https://drive.google.com/file/d/1KaHRZ-kTrnwmz_XbboWGyXfvCxEW10bu/view?usp=sharing)
 
 En este documento nos encontraremos el Modelo Relacional de la base de datos, dentro del cual podremos ver las diferentes tablas que perteneceran a la base de datos, asi como los atributos y la informacion que guardara.
 
 
-### [CSI8] (https://drive.google.com/file/d/1vGC8rX1heiH0KHElnG40GRoRckDECtqe/view?usp=sharing)
+### [CSI8](https://drive.google.com/file/d/1vGC8rX1heiH0KHElnG40GRoRckDECtqe/view?usp=sharing)
 
 En este documento figuran las diferentes pruebas que asugaran el correcto funcionamiento de la base de datos asi como sus componenetes.
 
-### ScriptCreacion
+### [ScriptCreacion](https://drive.google.com/file/d/1MM77Do0lsBPq7uu-4bYwXi5x4TVtqn-t/view?usp=sharing)
 
 En este documento se ve reflejado los diferentes scripts o sentencias que generaran de forma automatica el esquema de la base de datos de C.A.F.E
 
