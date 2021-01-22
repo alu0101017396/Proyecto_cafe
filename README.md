@@ -29,7 +29,7 @@ En este documento nos encontraremos el Modelo Relacional de la base de datos, de
 
 En este documento figuran las diferentes pruebas que asugaran el correcto funcionamiento de la base de datos asi como sus componenetes.
 
-### [ScriptCreacion](https://drive.google.com/file/d/1MM77Do0lsBPq7uu-4bYwXi5x4TVtqn-t/view?usp=sharing)
+### [ScriptCreacion](./Documentos/ScriptCreacion.docx.pdf)
 
 En este documento se ve reflejado los diferentes scripts o sentencias que generaran de forma automatica el esquema de la base de datos de C.A.F.E
 
