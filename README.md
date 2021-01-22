@@ -46,3 +46,13 @@ Scripts para insertar informacion dentro de la base de datos.
 ### [Triggers](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Trigger)
 
 Scripts de los disparadores (triggers) de la base de datos.
+
+# Capturas de las pruebas de la Base de Datos
+
+### [Documento Capturas](https://github.com/alu0101017396/Proyecto_cafe/blob/main/Documentos/Capturas%20Base%20de%20Datos.pdf)
+
+Documento que contiene todas las capturas de las pruebas de la Base de Datos junto con una pequeña descripción de su funcionamiento.
+
+### [Carpeta Capturas](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Documentos/Im%C3%A1genes%20de%20capturas%20de%20la%20Base%20de%20Datos)
+
+Carpeta donde se encuentran todas las capturas utilizadas en el anterior documento, con su calidad y tamaño original.
