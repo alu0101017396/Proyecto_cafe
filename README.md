@@ -16,34 +16,34 @@ También se quiere tener constancia de las reclamaciones y las valoraciones que 
 
 ## Documentos del proyecto
 
-### [ERE - Modelo Entidad Relacion Extendido](https://drive.google.com/file/d/1AtVhL4PMIkBjO-6nHEWy3IV6Y3pfqCxy/view?usp=sharing)
+### [ERE - Modelo Entidad Relacion Extendido](./Documentos/ERE.docx.pdf)
 
 En este documento se establece el modelo entidad relacion del proyecto. Dentro de el se encuentra el esquema E/R, asi mismo una descripcion de una explicacion de cada entidad y de cada relacion (con cardinalidad) y los atributos que dispone cada uno si es que los tiene. 
 
-### [Grafo Relacional](https://drive.google.com/file/d/1KaHRZ-kTrnwmz_XbboWGyXfvCxEW10bu/view?usp=sharing)
+### [Grafo Relacional](./Documentos/GrafoRelacional.docx.pdf)
 
 En este documento nos encontraremos el Modelo Relacional de la base de datos, dentro del cual podremos ver las diferentes tablas que perteneceran a la base de datos, asi como los atributos y la informacion que guardara.
 
 
-### [CSI8](https://drive.google.com/file/d/1vGC8rX1heiH0KHElnG40GRoRckDECtqe/view?usp=sharing)
+### [CSI8](./Documentos/CSI8.docx.pdf)
 
 En este documento figuran las diferentes pruebas que asugaran el correcto funcionamiento de la base de datos asi como sus componenetes.
 
-### [ScriptCreacion](https://drive.google.com/file/d/1MM77Do0lsBPq7uu-4bYwXi5x4TVtqn-t/view?usp=sharing)
+### [ScriptCreacion](./Documentos/ScriptCreacion.docx.pdf)
 
 En este documento se ve reflejado los diferentes scripts o sentencias que generaran de forma automatica el esquema de la base de datos de C.A.F.E
 
 ## Scripts de la Base de Datos
 
-### [Crear_tablas](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Crear_Tablas)
+### [Crear_tablas](./Crear_Tablas/cafe.sql)
 
 Scripts SQL que genraran las diferentes tablas de la base de datos
 
-### [Datos_Insertados](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Datos_insertados)
+### [Datos_Insertados](./Datos_insertados/carga.sql)
 
 Scripts para insertar informacion dentro de la base de datos.
 
-### [Triggers](https://github.com/alu0101017396/Proyecto_cafe/tree/main/Trigger)
+### [Triggers](./Trigger)
 
 Scripts de los disparadores (triggers) de la base de datos.
 
